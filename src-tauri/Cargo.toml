@@ -1,0 +1,60 @@
+[package]
+name = "porthole"
+version = "1.0.0"
+description = "A fast, native desktop client for PostgreSQL, MySQL, MariaDB, SQLite and MongoDB."
+license = "MIT"
+repository = "https://github.com/mellowforge/porthole"
+authors = ["Konstantin Penzin"]
+edition = "2024"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "porthole_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1.54.1", features = ["full"] }
+async-trait = "0.1.92"
+thiserror = "2.0.21"
+uuid = { version = "1.29.0", features = ["v4", "serde"] }
+sqlx = { version = "0.9", features = ["runtime-tokio", "tls-rustls-ring-native-roots", "postgres", "sqlite", "macros", "migrate"] }
+keyring = { version = "3", features = ["apple-native"] }
+tokio-postgres = "0.7"
+futures-util = "0.3"
+bytes = "1"
+rustls-native-certs = "0.8"
+tokio-postgres-rustls = { version = "0.14", features = ["ring", "native-certs"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+rusqlite = { version = "0.39", features = ["bundled", "column_decltype"] }
+mysql_async = { version = "0.37", default-features = false, features = ["default-rustls-ring"] }
+mongodb = { version = "3.10", default-features = false, features = ["compat-3-3-0", "bson-3", "rustls-tls", "dns-resolver"] }
+bson = { version = "3.1", features = ["serde_json-1"] }
+
+
+# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
+
+[dev-dependencies]
+tempfile = "3.27.0"
+url = "2"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# Same version Tauri/tao already link; used to answer applicationShouldTerminate (Dock ▸ Quit).
+objc2 = "0.6"

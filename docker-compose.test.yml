@@ -1,0 +1,58 @@
+services:
+  pg11:
+    image: postgres:11-alpine
+    ports:
+      - "54311:5432"
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: app_test
+  pg17:
+    image: postgres:17-alpine
+    ports:
+      - "54317:5432"
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: app_test
+  mysql84:
+    image: mysql:8.4
+    ports:
+      - "33084:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: app_test
+  mariadb114:
+    image: mariadb:11.4
+    ports:
+      - "33114:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: test
+      MARIADB_DATABASE: app_test
+  mongo60:
+    image: mongo:6.0
+    ports:
+      - "27060:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: test
+  mongo80:
+    image: mongo:8.0
+    ports:
+      - "27080:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: test
+  mongo80rs:
+    # A single-node replica set without auth (auth on a replica set needs a key file). The host
+    # port equals the container port, so the member's advertised host (localhost:27082) works.
+    image: mongo:8.0
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27082"]
+    ports:
+      - "27082:27082"
+    healthcheck:
+      test: ["CMD", "mongosh", "--port", "27082", "--quiet", "--eval",
+             "try { rs.status() } catch (e) { rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27082'}]}) }; if (!db.hello().isWritablePrimary) quit(1)"]
+      interval: 2s
+      timeout: 10s
+      retries: 30
+      start_period: 5s
+      start_interval: 1s

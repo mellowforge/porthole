@@ -1,0 +1,48 @@
+:root {
+  --text: #1c1c1e;
+  --text-2: #6e6e73;
+  --muted: #a1a1a6;
+  --kbd: #8e8e93;
+  --border: #e3e3e8;
+  --border-strong: #c7c7cc;
+  --sidebar: #f5f5f7;
+  --toolbar: #fbfbfd;
+  --selected: #e3e3ea;
+  --badge: #e9e9ef;
+  --badge-text: #3a3a3c;
+  --track: #ededf2;
+  --grid-header: #fafafc;
+  --grid-line: #f0f0f3;
+  --hover: #f2f2f7;
+  --accent: #2f6bff;
+  --ok: #34c759;
+  --ok-text: #1e7b3a;
+  --ok-bg: #eaf8ee;
+  --danger: #d92d20;
+  /* Pending changes in the grid: edited cells and new rows, rows marked for deletion. */
+  --pending-bg: #FEF3C7;
+  --deleted-bg: #FDECEC;
+  --env-local: #8e8e93;
+  --env-staging: #f59e0b;
+  --env-production: #ef4444;
+  /* Translucent so the selection layer underneath stays visible (CodeMirror draws the
+     selection below line backgrounds). Over white it reads as #f3f6fd. */
+  --statement-bg: rgba(47, 107, 255, 0.06);
+  --syntax-keyword: #7a3ec8;
+  --syntax-string: #c2410c;
+  --syntax-number: #0e7490;
+  --syntax-function: #0e7490;
+  --radius: 7px;
+  --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --sidebar-width: 280px;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,85 @@
+{
+  "fx": {
+    "users": [
+      {"_id": {"$oid": "650000000000000000000001"}, "name": "Ann", "email": "ann@example.com", "active": true,
+       "created": {"$date": {"$numberLong": "1704164645678"}}, "tags": ["admin", "ops"],
+       "age": {"$numberInt": "30"}, "score": {"$numberInt": "10"},
+       "address": {"city": "Oslo", "zip": "0150"}},
+      {"_id": {"$oid": "650000000000000000000002"}, "name": "Bob", "email": "bob@example.com", "active": true,
+       "created": {"$date": {"$numberLong": "1704251045000"}}, "tags": ["dev"],
+       "age": {"$numberLong": "30"}, "score": {"$numberDouble": "7.5"},
+       "address": {"city": "Berlin", "zip": "10115"}},
+      {"_id": {"$oid": "650000000000000000000003"}, "name": "Cid", "email": "cid@example.com", "active": true,
+       "created": {"$date": {"$numberLong": "1704337445000"}}, "tags": [],
+       "age": {"$numberDouble": "30.0"}, "score": {"$numberInt": "8"},
+       "address": {"city": "Paris", "zip": "75001"}},
+      {"_id": {"$oid": "650000000000000000000004"}, "name": "Dee", "email": "dee@example.com", "active": true,
+       "created": {"$date": {"$numberLong": "1704423845000"}}, "tags": ["dev", "qa"],
+       "age": "30", "score": {"$numberDouble": "9.25"},
+       "address": {"city": "Rome", "zip": "00184"}},
+      {"_id": {"$oid": "650000000000000000000005"}, "name": "Eve", "email": "eve@example.com", "active": false,
+       "created": {"$date": {"$numberLong": "1704510245000"}}, "tags": ["ops"],
+       "age": {"$numberInt": "41"}, "score": {"$numberInt": "6"},
+       "address": {"city": "Oslo", "zip": "0151"}},
+      {"_id": {"$oid": "650000000000000000000006"}, "name": "Fay", "email": "fay@example.com", "active": false,
+       "created": {"$date": {"$numberLong": "1704596645000"}}, "tags": ["qa"],
+       "score": {"$numberDouble": "5.5"}}
+    ],
+    "typed": [
+      {"_id": {"$numberInt": "1"},
+       "int32": {"$numberInt": "42"},
+       "int64": {"$numberLong": "42"},
+       "int64_big": {"$numberLong": "9007199254740993"},
+       "double_one": {"$numberDouble": "1.0"},
+       "double_tenth": {"$numberDouble": "0.1"},
+       "double_1e300": {"$numberDouble": "1e300"},
+       "double_1e21": {"$numberDouble": "1e21"},
+       "double_12345678": {"$numberDouble": "12345678.0"},
+       "double_nan": {"$numberDouble": "NaN"},
+       "double_neg_inf": {"$numberDouble": "-Infinity"},
+       "double_neg_zero": {"$numberDouble": "-0.0"},
+       "decimal": {"$numberDecimal": "1.10"},
+       "string": "héllo \"q\"",
+       "bool": true,
+       "null": null,
+       "oid": {"$oid": "65a1b2c3d4e5f60718293a4b"},
+       "date_ms": {"$date": {"$numberLong": "1704164645678"}},
+       "date_pre_epoch": {"$date": {"$numberLong": "-1000"}},
+       "date_year_10000": {"$date": {"$numberLong": "253402300800000"}},
+       "binary": {"$binary": {"base64": "AQID/w==", "subType": "00"}},
+       "uuid": {"$binary": {"base64": "ASNFZ4mrze8BI0VniavN7w==", "subType": "04"}},
+       "nested": {"a": {"$numberInt": "1"}, "b": {"$numberLong": "2"}, "c": {"d": [{"$numberDouble": "1.0"}, "x"]}},
+       "nested_za": {"z": {"$numberInt": "1"}, "a": {"$numberLong": "2"}},
+       "nested_neg": {"a": {"$numberInt": "-7"}, "b": [{"$numberInt": "-1"}, {"$numberInt": "2"}], "c": {"$numberInt": "-2147483648"}, "d": {"$numberLong": "-5"}},
+       "timestamp": {"$timestamp": {"t": 1700000000, "i": 7}},
+       "regex": {"$regularExpression": {"pattern": "^ab+c", "options": "i"}},
+       "min_key": {"$minKey": 1},
+       "max_key": {"$maxKey": 1},
+       "undefined": {"$undefined": true},
+       "code": {"$code": "return 1"},
+       "symbol": {"$symbol": "sym"},
+       "a.b": {"$numberInt": "5"},
+       "$c": {"$numberInt": "7"}}
+    ],
+    "keys": [
+      {"_id": {"$oid": "65a1b2c3d4e5f60718293a4b"}, "v": {"$numberInt": "0"}},
+      {"_id": "65a1b2c3d4e5f60718293a4b", "v": {"$numberInt": "0"}},
+      {"_id": {"$numberLong": "9007199254740992"}, "v": {"$numberInt": "0"}},
+      {"_id": {"$numberLong": "9007199254740993"}, "v": {"$numberInt": "0"}},
+      {"_id": {"$binary": {"base64": "ESIzRFVmd4iZqrvM3e7/AA==", "subType": "04"}}, "v": {"$numberInt": "0"}},
+      {"_id": {"k": {"$numberInt": "1"}}, "v": {"$numberInt": "0"}}
+    ],
+    "metrics": [
+      {"t": {"$date": {"$numberLong": "1704164645000"}}, "v": {"$numberInt": "1"}},
+      {"t": {"$date": {"$numberLong": "1704164646000"}}, "v": {"$numberInt": "2"}},
+      {"t": {"$date": {"$numberLong": "1704164647000"}}, "v": {"$numberInt": "3"}}
+    ]
+  },
+  "fx_other": {
+    "orders": [
+      {"_id": {"$numberInt": "1"}, "item": "pen", "qty": {"$numberInt": "2"}},
+      {"_id": {"$numberInt": "2"}, "item": "ink", "qty": {"$numberInt": "1"}},
+      {"_id": {"$numberInt": "3"}, "item": "pad", "qty": {"$numberInt": "5"}}
+    ]
+  }
+}
